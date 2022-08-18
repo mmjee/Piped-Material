@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n'
 import TimeAgo from 'javascript-time-ago'
 import * as LocaleMatcher from '@formatjs/intl-localematcher'
 
+import { EDS } from '@/plugins/eds'
 import store from '@/store'
 import ENTranslations from '@/translations/en.json'
 import ENTimeAgo from 'javascript-time-ago/locale/en.json'
@@ -540,15 +541,13 @@ export async function changeLocale (lang) {
 		syncStylesPerLanguage(parsed),
 		loadFormatting(lang, parsed)
 	])
-	window.localStorage.setItem('LOCALE', lang)
+	await EDS.setKey('locale', lang)
 }
 
-function initializeLocalLocale () {
-	let lang = window.localStorage.getItem('LOCALE')
+export async function initializeLocalLocale () {
+	let lang = await EDS.getKey('locale')
 	if (lang == null) {
 		lang = LocaleMatcher.match(navigator.languages, SUPPORTED_LANGUAGES, 'en')
 	}
 	return changeLocale(lang)
 }
-
-export const i18nInitialized = initializeLocalLocale()

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { isPlainObject as _isPlainObject, set as _set } from 'lodash-es'
+import { EDS } from '@/plugins/eds'
 
 export class AuthenticationError extends Error {
 	constructor (message) {
@@ -28,14 +29,14 @@ const AuthenticationStore = {
 				isAuthenticated: true,
 				authToken: token
 			})
-			window.localStorage.setItem('AUTH', JSON.stringify(state.authStateByInstance))
+			EDS.setKey('AUTH', state.authStateByInstance).catch(e => console.error(e))
 		},
 
 		deleteAuthToken (state, { apiURL }) {
 			_set(state.authStateByInstance, [apiURL], {
 				isAuthenticated: false
 			})
-			window.localStorage.setItem('AUTH', JSON.stringify(state.authStateByInstance))
+			EDS.setKey('AUTH', state.authStateByInstance).catch(e => console.error(e))
 		}
 	},
 
@@ -52,10 +53,10 @@ const AuthenticationStore = {
 	},
 
 	actions: {
-		initializeAuth ({ commit }) {
-			const data = window.localStorage.getItem('AUTH')
+		async initializeAuth ({ commit }) {
+			const data = await EDS.getKey('AUTH')
 			if (data != null) {
-				commit('replaceAuth', JSON.parse(data))
+				commit('replaceAuth', data)
 			}
 		},
 
@@ -139,15 +140,6 @@ const AuthenticationStore = {
 	}
 }
 
-function initializeAuthEvents (store) {
-	window.addEventListener('storage', (storageEv) => {
-		if (storageEv.key === 'AUTH') {
-			store.commit('auth/replaceAuth', JSON.parse(storageEv.newValue))
-		}
-	})
-}
-
 export {
-	AuthenticationStore,
-	initializeAuthEvents
+	AuthenticationStore
 }
