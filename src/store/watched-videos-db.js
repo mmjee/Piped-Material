@@ -1,13 +1,31 @@
 import Dexie from 'dexie'
+import { v4 as uuidv4 } from 'uuid'
+import { initializeDexieTables } from 'libeds/dexiesync'
+
+import { EDS } from '@/plugins/eds'
 
 export const PMDB = new Dexie('PipedMaterialDB')
 
-PMDB.version(3).stores({
-	watchedVideos: '++id,videoId,progressPcnt,timestamp'
+PMDB.version(4).stores({
+	watchedVideos: 'id,videoId,progressPcnt,timestamp'
 })
+
+export async function syncPMDB () {
+	return initializeDexieTables({
+		EDS,
+		tableList: [PMDB.watchedVideos],
+		syncFilters: {
+			watchedVideos: (x) => {
+				x.id = x.id ?? uuidv4()
+				return x
+			}
+		}
+	})
+}
 
 export async function addWatchedVideo (videoObj) {
 	return PMDB.watchedVideos.add({
+		id: uuidv4(),
 		videoId: videoObj.videoId,
 		video: videoObj,
 		progress: 0,

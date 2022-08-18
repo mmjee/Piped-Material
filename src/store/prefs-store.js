@@ -1,4 +1,5 @@
 import { isString, set as _set } from 'lodash-es'
+import { EDS } from '@/plugins/eds'
 
 export const COLOR_SCHEME_STATES = {
 	LIGHT: 0,
@@ -48,7 +49,7 @@ const PrefsStore = {
 			value
 		}) {
 			_set(state.prefs, id, value)
-			window.localStorage.setItem('PREFERENCES', JSON.stringify(state.prefs))
+			EDS.setKey('preferences', state.prefs).catch(e => console.error(e))
 		},
 
 		replacePrefs (state, nextPrefs) {
@@ -56,17 +57,16 @@ const PrefsStore = {
 		}
 	},
 	actions: {
-		loadState ({ commit }) {
+		async loadState ({ commit }) {
 			try {
 				const cs = window.localStorage.getItem('COLOR_SCHEME')
 				if (isString(cs) && cs.length !== 0) {
 					commit('setColorScheme', { colorScheme: JSON.parse(cs) })
 				}
 
-				const jv = window.localStorage.getItem('PREFERENCES')
-				if (isString(jv) && jv.length !== 0) {
-					const p = JSON.parse(jv)
-					commit('replacePrefs', p)
+				const jv = await EDS.getKey('preferences')
+				if (jv != null) {
+					commit('replacePrefs', jv)
 				}
 			} catch (e) {
 				console.log('Error:', e)
@@ -118,9 +118,7 @@ const PrefsStore = {
 
 function initializePrefEvents (store) {
 	window.addEventListener('storage', (storageEv) => {
-		if (storageEv.key === 'PREFERENCES') {
-			store.commit('prefs/replacePrefs', JSON.parse(storageEv.newValue))
-		} else if (storageEv.key === 'COLOR_SCHEME') {
+		if (storageEv.key === 'COLOR_SCHEME') {
 			store.commit('prefs/setColorScheme', {
 				colorScheme: JSON.parse(storageEv.newValue)
 			})
