@@ -169,7 +169,11 @@
         },
         "codecs": "Кодеки",
         "filterOutShortsInFeedPage": "Відфільтровувати YT Shorts на сторінках стрічки (тренди, стрічка тощо)",
-        "filterOutShortsInSearchResults": "Відфільтровувати YT Shorts на сторінках результатів пошуку"
+        "filterOutShortsInSearchResults": "Відфільтровувати YT Shorts на сторінках результатів пошуку",
+        "custom_instance": {
+            "button_label": "Увімкнути введення власного екземпляра?",
+            "input_label": "URL-адреса екземпляра"
+        }
     },
     "footer": {
         "commit_message_1": "коміт {hash}",

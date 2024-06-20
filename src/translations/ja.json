@@ -109,7 +109,7 @@
         "filterOutShortsInFeedPage": "フィード/急上昇からショート動画を除外する",
         "custom_instance": {
             "input_label": "インスタンスのベース URL",
-            "button_label": "独自インスタンスを使用するか？"
+            "button_label": "独自のインスタンスを使用するか？"
         }
     },
     "titles": {

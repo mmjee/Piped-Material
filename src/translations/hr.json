@@ -93,7 +93,10 @@
             "av01": "AV1 (AOMedia video 1)",
             "avc1": "AVC (H.264/napredno kodiranje videa)"
         },
-        "codecs": "Kodeksi"
+        "codecs": "Kodeksi",
+        "custom_instance": {
+            "input_label": "Osnovni URL intance"
+        }
     },
     "titles": {
         "feed": "Članak",
