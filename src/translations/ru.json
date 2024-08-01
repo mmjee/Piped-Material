@@ -120,5 +120,19 @@
     },
     "visibilities": {
         "unlisted": "Не опубликованно"
+    },
+    "channel_tabs": {
+        "videos": "Видео",
+        "channels": "Каналы",
+        "shorts": "Shorts",
+        "livestreams": "Прямые трансляции",
+        "playlists": "Плейлисты"
+    },
+    "search_results": {
+        "result_types": {
+            "all": "Все результаты",
+            "playlists": "Плейлисты",
+            "music_songs": "Песни (YouTube Музыка)"
+        }
     }
 }
