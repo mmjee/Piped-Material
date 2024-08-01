@@ -1,7 +1,7 @@
 {
     "actions": {
         "unsubscribe": "Odjavite pretplatu",
-        "view_subscriptions": "Prikažite pretplate",
+        "view_subscriptions": "Prikaži pretplate",
         "rss_of_subscriptions": "RSS vaših pretplata",
         "sort_by": "Poredajte po:",
         "most_recent": "Najnovije",
@@ -10,13 +10,13 @@
         "skip_sponsors": "Sponzori",
         "skip_intro": "Prijelaz/Uvodna animacija",
         "skip_outro": "Odjavna špica/Zasluge",
-        "skip_preview": "Pregled/Rekapitulacija",
+        "skip_preview": "Pregled/Sažetak",
         "skip_interaction": "Podsjetnik za interakciju (zahtijeva pretplatu)",
         "skip_self_promo": "Neplaćena/osobna promocija",
         "skip_non_music": "Glazba: dijelovi bez glazbe",
         "enabled_codecs": "Omogućeni kodeci (višestruki)",
         "logInSignUp": "Prijava/Registracija",
-        "logOut": "Odjavite se",
+        "logOut": "Odjava",
         "loadReplies": "Učitaj odgovore",
         "hideReplies": "Sakrij odgovore",
         "showReplies": "Prikaži odgovore",
@@ -29,10 +29,10 @@
         "skip_filler": "Popune",
         "theme": "Izgled",
         "auto": "Automatski",
-        "dark": "Tamno",
-        "light": "Svijetlo",
-        "minimize_description": "Sakrijte opis prema zadanim postavkama",
-        "store_watch_history": "Spremite povijest gledanja",
+        "dark": "Tamna",
+        "light": "Svijetla",
+        "minimize_description": "Standardno sakrij opis",
+        "store_watch_history": "Spremi povijest gledanja",
         "instances_list": "Popis instanci",
         "language_selection": "Izbor jezika",
         "loadComments": "Učitaj komentare",
@@ -40,7 +40,7 @@
         "confirmPWToDelAcc": "Potvrdite lozinku da biste izbrisali račun",
         "delAccountMessage": "Želite li izbrisati svoj račun?",
         "accounts": "Vaš korisnički račun",
-        "enable_dark_mode": "Omogućite Mračni Saštimak",
+        "enable_dark_mode": "Omogući tamni modus",
         "related_videos": "Povezana videa",
         "related_comments": "Komentari",
         "autoplay_next_video": "Prijeđi na prvi povezani videozapis kad ovaj videozapis završi",
@@ -53,9 +53,9 @@
     "preferences": {
         "sponsorblock": "Aktiviraj SponsorBlock",
         "selectedSkip": "Segmenti za preskakanje",
-        "skipToLastPoint": "Prijeđite na posljednju gledanu točku kada naiđete na već pogledani videozapis",
+        "skipToLastPoint": "Prijeđi na zadnje pogledano mjesto kada naiđeš na već pogledani videozapis",
         "playerAutoplay": "Automatski reproducirajte video",
-        "bufferGoal": "Količina sekundi podataka koja se mora držati u međuspremniku",
+        "bufferGoal": "Broj sekundi podataka koji se moraju čuvati u predmemoriji",
         "listen": "Samo zvuk",
         "quality": "Zadana kvaliteta",
         "feedColumns": "Broj stupaca na stranicama članaka",
@@ -64,11 +64,11 @@
         "instance": "Instanca",
         "disableLBRY": "Onemogući LBRY",
         "clickbaitThumbnailAvoidance": "Zamijeni standardne minijature automatski generiranim",
-        "proxyLBRY": "Proksijski LBRY videozapisi",
-        "showRelatedVideos": "Prikažite povezane videozapise",
-        "showMarkers": "Prikažite oznake SponzorBloka",
+        "proxyLBRY": "Videozapisi putem LBRY proksija",
+        "showRelatedVideos": "Prikaži povezane videozapise",
+        "showMarkers": "Prikaži SponzorBlock oznake",
         "disableCommentsByDefault": "Ne prikazuj komentare prema zadanim postavkama",
-        "colorScheme": "Šema Boja",
+        "colorScheme": "Shema boja",
         "homepageButton": "Omogući gumb početne stranice",
         "quality_opts": {
             "auto": "Automatski određeno",
@@ -95,8 +95,11 @@
         },
         "codecs": "Kodeksi",
         "custom_instance": {
-            "input_label": "Osnovni URL intance"
-        }
+            "input_label": "Osnovni URL intance",
+            "button_label": "Omogućiti unos prilagođene instance?"
+        },
+        "filterOutShortsInFeedPage": "Filtrirajte kratke YouTube snimke na stranicama feedova (u trendu, feed, itd.)",
+        "filterOutShortsInSearchResults": "Filtrirajte kratke YouTube snimke na stranicama rezultata pretrage"
     },
     "titles": {
         "feed": "Članak",
@@ -166,16 +169,16 @@
         "shorts": "Kratki videozapisi"
     },
     "auth_dialog": {
-        "password": "Zaporka",
-        "log_in": "Prijaviti se",
+        "password": "Lozinka",
+        "log_in": "Prijava",
         "username": "Korisničko ime",
         "title": "Autentifikacija",
-        "sign_up": "Upišite se"
+        "sign_up": "Registracija"
     },
     "footer": {
         "translations_msg_2": "putem Weblatea",
         "commit_message_1": "commit {hash}",
-        "text": "Pokrećući Piped-Material {1}, pomogni prevoditi Piped-Material na više jezika {2}!{0} Za pomoć, prijedloge i/ili povratne informacije, molimo {3}.",
+        "text": "Pokrećući Piped-Material {1}, pomogni prevoditi Piped-Material na više jezika {2}!{0} Za pomoć, prijedloge i/ili povratne informacije {3}.",
         "help_message_3": "pridruži se Matrix sobi ili IRC kanalu"
     },
     "visibilities": {
