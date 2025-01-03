@@ -33,7 +33,7 @@
         "channel_name_desc": "ناوی کەناڵ (Z-A)",
         "back": "گەڕانەوە",
         "uses_api_from": "API بەکاردێنێت لە ",
-        "enable_sponsorblock": "چالاککردنی سپۆنسەربلوک",
+        "enable_sponsorblock": "چاڵاککردنی سپۆنسەربلوک",
         "skip_sponsors": "سپۆنسەرەکان",
         "skip_intro": "سەرەتاکان",
         "skip_outro": "کۆتاییەکان",
@@ -74,7 +74,7 @@
     },
     "preferences": {
         "feedColumns": "ژمارەی ئەستوونەکان لە پەڕەی پوختەکان",
-        "sponsorblock": "چالاککردنی سپۆنسەربلوک",
+        "sponsorblock": "چاڵاککردنی سپۆنسەربلوک",
         "selectedSkip": "پەڕین لە بەشەکان",
         "skipToLastPoint": "پەڕین بۆ دوایین خاڵی سەیرکراو کاتێک ڕووبەڕووی ڤیدیۆیەک دەبیەوە کە پێشتر سەیرکراوە",
         "disableLBRY": "ناچالاککردنی LBRY",
@@ -117,7 +117,11 @@
         "codecs": "کۆدێکەکان",
         "disableDuplicateHistoryEntries": "لەکارخستنی دروستکردنی سەیرکردنی مێژوویی دووبارەبوەوە",
         "filterOutShortsInFeedPage": "قم بتصفية فيديوهات YouTube القصيرة في صفحات الخلاصة (الرائجة، والخلاصة، وما إلى ذلك)",
-        "filterOutShortsInSearchResults": "قم بتصفية فيديوهات YouTube القصيرة في صفحات نتائج البحث"
+        "filterOutShortsInSearchResults": "قم بتصفية فيديوهات YouTube القصيرة في صفحات نتائج البحث",
+        "custom_instance": {
+            "button_label": "چالاککردنی بەکارهێنانی ڕاژەی تایبەت؟",
+            "input_label": "بەستەری ڕاژەی تایبەت"
+        }
     },
     "video_sharing_panel": {
         "share": "هاوبەشکردن",
