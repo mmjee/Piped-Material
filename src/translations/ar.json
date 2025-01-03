@@ -101,8 +101,8 @@
             "720p": "720p",
             "1080p": "1080p",
             "1440p": "1440p",
-            "2160p": "2160p (يُطلق عليه عادةً 3840x2160, 4K)",
-            "4320p": "4320p (يُطلق عليه عادةً 7680x4320, 8K)"
+            "2160p": "2160p (3840x×2160، 4K)",
+            "4320p": "4320p (7680x×4320، 8K)"
         },
         "column_opts": {
             "4": "4 أعمدة",
@@ -115,7 +115,13 @@
             "avc1": "AVC (H.264/Advanced Video Coding)"
         },
         "codecs": "برامج الترميز",
-        "disableDuplicateHistoryEntries": "تعطيل إنشاء إدخالات سجل المشاهدة المكررة"
+        "disableDuplicateHistoryEntries": "تعطيل إنشاء إدخالات سجل المشاهدة المكررة",
+        "custom_instance": {
+            "button_label": "تمكين إدخال خادم مخصص؟",
+            "input_label": "رابط الخادم المخصص"
+        },
+        "filterOutShortsInFeedPage": "فلتر مقاطع shorts من YouTube في صفحات التغذية (تريند، التغذية، إلخ.)",
+        "filterOutShortsInSearchResults": "فلتر مقاطع Shorts في صفحات نتائج البحث"
     },
     "video_sharing_panel": {
         "share": "مشاركة",
