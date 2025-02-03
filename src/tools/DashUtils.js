@@ -7,7 +7,7 @@ export function generateDashFileFromFormats (VideoFormats, VideoLength) {
 }
 
 function generateJSONFromData (VideoFormatArray, VideoLength) {
-	const convertJSON = {
+	return {
 		declaration: {
 			attributes: {
 				version: '1.0',
@@ -35,7 +35,6 @@ function generateJSONFromData (VideoFormatArray, VideoLength) {
 			}
 		]
 	}
-	return convertJSON
 }
 
 function generateAdaptationSet (VideoFormatArray) {

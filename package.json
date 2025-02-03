@@ -27,6 +27,7 @@
     "javascript-time-ago": "https://Bronze8113.s3.eu-central-003.backblazeb2.com/QmPfsnf4YYW63ddBUVXkT9BNQyuGKMnzyFVSV2dcx3dpz1?filename=jta-2.5.9.tgz",
     "lodash-es": "^4.17.21",
     "marked": "^9.1.6",
+    "msgpackr": "^1.11.2",
     "mux.js": "^6.3.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "psychic-tiny-keys": "https://Bronze8113.s3.eu-central-003.backblazeb2.com/QmW5pzBfNdyUjcCpp6ZXMXVDf93pJDSAZwSEaMBAahNuTA?filename=psychic-tiny-keys-v0.0.1.tar.gz",

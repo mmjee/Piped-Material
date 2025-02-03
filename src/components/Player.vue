@@ -21,7 +21,6 @@ import shaka from 'shaka-player/dist/shaka-player.ui.js'
 import 'shaka-player/dist/controls.css'
 import * as LocaleMatcher from '@formatjs/intl-localematcher'
 
-import * as DashUtils from '@/tools/DashUtils'
 import '@/components/Player.scss'
 
 // Fonts for Shaka
@@ -187,49 +186,18 @@ export default {
 			videoEl.setAttribute('poster', this.video.thumbnailUrl)
 
 			const noPrevPlayer = !this.$player
-			const streams = []
 
-			streams.push(...this.video.audioStreams)
-			streams.push(...this.video.videoStreams)
-
-			const MseSupport = window.MediaSource !== undefined
-			const lbry = this.$store.getters['prefs/getPreferenceBoolean']('disableLBRY', true)
-				? null
-				: this.video.videoStreams.filter(stream => stream.quality === 'LBRY')[0]
 			let uri, mime
 
 			if (this.video.livestream) {
 				uri = this.video.hls
 				mime = 'application/x-mpegURL'
-			} else if (this.video.audioStreams.length > 0 && !lbry && MseSupport) {
-				if (!this.video.dash) {
-					const dash = DashUtils.generateDashFileFromFormats(
-						streams,
-						this.video.duration
-					)
-					uri = 'data:application/dash+xml;charset=utf-8;base64,' + btoa(dash)
-				} else {
-					const url = new URL(this.video.dash)
-					url.searchParams.set('rewrite', false)
-					uri = url.toString()
-				}
+			} else if (this.video.dash) {
+				uri = this.video.dash
 				mime = 'application/dash+xml'
-			} else if (lbry) {
-				uri = lbry.url
-				if (this.$store.getters['prefs/getPreferenceBoolean']('proxyLBRY', true)) {
-					const url = new URL(uri)
-					url.searchParams.set('host', url.host)
-					url.host = new URL(this.video.proxyUrl).host
-					uri = url.toString()
-				}
-				mime = await fetch(uri, {
-					method: 'HEAD'
-				}).then(response => response.headers.get('Content-Type'))
 			} else if (this.video.hls) {
 				uri = this.video.hls
 				mime = 'application/x-mpegURL'
-			} else {
-				uri = this.video.videoStreams.filter(stream => stream.codec == null).slice(-1)[0].url
 			}
 			this.access = [uri, mime]
 
@@ -362,7 +330,7 @@ export default {
 			})
 
 			const quality = this.$store.getters['prefs/getPreferenceNumber']('quality', 0)
-			const qualityConds = quality > 0 && (this.video.audioStreams.length > 0 || this.video.livestream) && !this.audioOnly
+			const qualityConds = quality > 0 && !this.video.livestream && !this.audioOnly
 			if (qualityConds) this.$player.configure('abr.enabled', false)
 
 			player.load(uri, startTime, mime).then(() => {
@@ -381,6 +349,8 @@ export default {
 					const tracks = player
 						.getVariantTracks()
 						.filter(track => track.language === bestFitLanguage || track.language === 'und')
+
+					console.log('Tracks:', tracks)
 
 					// Choose the best audio stream
 					if (quality >= 480) {
