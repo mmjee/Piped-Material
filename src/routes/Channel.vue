@@ -225,9 +225,7 @@ export default {
 	},
 	computed: {
 		renderedDescription () {
-			return LibPiped.purifyHTML(LibPiped.markdown2HTML(this.channel.description, {
-				breaks: true
-			}))
+			return LibPiped.purifyHTML(LibPiped.markdown2HTML(this.channel.description))
 		},
 
 		unauthenticatedRSS () {

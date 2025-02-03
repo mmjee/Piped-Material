@@ -91,9 +91,7 @@ export default {
 
 	computed: {
 		renderedCommentTxt () {
-			return LibPiped.purifyHTML(LibPiped.markdown2HTML(this.comment.commentText, {
-				breaks: true
-			}))
+			return LibPiped.purifyHTML(LibPiped.markdown2HTML(this.comment.commentText))
 		}
 	}
 }

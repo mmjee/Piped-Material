@@ -25,7 +25,7 @@
 							<v-col cols="12" md="6">
 								<ExpandableNumber :num="video.views" message-key="counts.views" />
 								•
-								{{ $store.getters['i18n/fmtDate'](new Date(video.uploadDate)) }}
+								{{ $store.getters['i18n/fmtDate'](video.uploadDate) }}
 								<span v-if="lastWatchFound">
 									•
 									{{ $t('misc.lastWatchedTill', { t: lastWatchDurationH }) }}
@@ -135,9 +135,9 @@
 
 <script>
 import throttle from 'lodash-es/throttle'
-import { mdiThumbUp, mdiShareVariant, mdiLinkPlus } from '@mdi/js'
+import { mdiLinkPlus, mdiShareVariant, mdiThumbUp } from '@mdi/js'
 
-import { PMDB, addWatchedVideo, updateWatchedVideoProgress, findLastWatch } from '@/store/watched-videos-db'
+import { addWatchedVideo, findLastWatch, PMDB, updateWatchedVideoProgress } from '@/store/watched-videos-db'
 import { LibPiped } from '@/tools/libpiped'
 
 import Player from '@/components/Player.vue'
@@ -152,6 +152,7 @@ import VideoComment from '@/components/Video/VideoComment'
 import VideoChapters from '@/components/Video/VideoChapters'
 import VideoSharingPanel from '@/components/Video/VideoSharingPanel'
 import VideoPlaylistOperationsA from '@/components/Playlist/VideoPlaylistOperationsA'
+import { getVideoData } from '@/store/yootoob-api'
 
 export default {
 	name: 'WatchVideo',
@@ -248,17 +249,13 @@ export default {
 		},
 
 		onShareClick () {
-			const time = this.$refs.player.getCurrentTime()
-			this.currentTime = time
+			this.currentTime = this.$refs.player.getCurrentTime()
 			this.sharingPanelOpen = true
 		},
 
 		async fetchVideo () {
 			try {
-				return await this.$store.dispatch('auth/makeRequest', {
-					method: 'GET',
-					path: '/streams/' + this.videoId
-				})
+				return await getVideoData(this.videoId)
 			} catch (e) {
 				if (e.isAxiosError) {
 					this.error = e.response.data
@@ -354,14 +351,18 @@ export default {
 		},
 
 		async getVideoData () {
-			const [video] = await Promise.all([
+			const [videoResp] = await Promise.all([
 				this.fetchVideo(),
 				this.getSponsors(),
 				(!this.$store.getters['prefs/getPreferenceBoolean']('disableCommentsByDefault'))
 					? this.fetchComments()
 					: null
 			])
+			console.log('Fetched Video Response:', videoResp)
 
+			const video = videoResp.data.piped_fmt
+			video.dash = videoResp.data.dash
+			video.hls = videoResp.data.hls
 			video.videoId = this.videoId
 			video.url = this.$route.fullPath
 
@@ -404,14 +405,14 @@ export default {
 			if (this.video.error) {
 				return
 			}
-			this.channelId = this.video.uploaderUrl.split('/')[2]
+			this.channelId = this.video.uploaderID
 
-			this.video.description = LibPiped.purifyHTML(
+			this.video.description = LibPiped.purifyHTML(LibPiped.markdown2HTML(
 				this.video.description
 					.replaceAll('http://www.youtube.com', '')
 					.replaceAll('https://www.youtube.com', '')
 					.replaceAll('\n', '<br>')
-			)
+			))
 		},
 
 		onTimeUpdate: throttle(function onTimeUpdate () {
