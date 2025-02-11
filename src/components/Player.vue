@@ -352,7 +352,12 @@ export default {
 					disableVideo: this.audioOnly
 				},
 				streaming: {
-					useNativeHlsOnSafari: false
+					useNativeHlsOnSafari: false,
+					retryParameters: {
+						timeout: 120_000,
+						stallTimeout: 30_000,
+						connectionTimeout: 120_000
+					}
 				}
 			})
 
