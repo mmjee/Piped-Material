@@ -16,7 +16,7 @@
     "@mdi/js": "^7.4.47",
     "@mojee/file-utils": "https://Bronze8113.s3.eu-central-003.backblazeb2.com/QmYEtpbjQqWYJDbcoixZvcccXkRFKBcTuRw5aa3hb8BWt8?filename=js-file-utils.tgz",
     "@mojee/noto-sans-cjk-webfont": "https://Bronze8113.s3.eu-central-003.backblazeb2.com/QmNqdNN63hFQJP3ndvsb4muR9TT2xCnvkkhn6L6bUyvc7f?filename=noto-sans-cjk-webfont.tgz",
-    "antar-hinted": "https://bronze8113.s3.eu-central-003.backblazeb2.com/antar-hinted-v2.tgz",
+    "antar-hinted": "https://bronze8113.s3.eu-central-003.backblazeb2.com/antar-hinted-v3.tgz",
     "axios": "^1.7.9",
     "core-js": "^3.40.0",
     "dexie": "^3.2.7",
