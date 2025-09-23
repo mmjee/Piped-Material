@@ -158,7 +158,9 @@
             "av01": "AV1 (AOMedia Video 1)",
             "avc1": "AVC (H.264/Advanced Video Coding)"
         },
-        "codecs": "Codec"
+        "codecs": "Codec",
+        "filterOutShortsInFeedPage": "Non mostrate gli Shorts YT sulle pagine del feed (trending, feed, etc.)",
+        "filterOutShortsInSearchResults": "Non mostrare gli Shorts YT nelle pagine dei risultati di ricerca"
     },
     "footer": {
         "commit_message_1": "commit {hash}",
