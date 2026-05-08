@@ -1,3 +1,7 @@
+# Update
+
+Most Piped instances no longer work because of changes Google implemented in recent years. I'm now working on a new YouTube client called [VidPipe](https://codeberg.org/mmjee/vidpipe) that I wrote from scratch to take a different approach that will hopefully not have these problems ever.
+
 # Piped-Material
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/mmjee/Piped-redesign?style=social)](https://github.com/mmjee/Piped-redesign/stargazers)
